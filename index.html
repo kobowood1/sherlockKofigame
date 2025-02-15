@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>The Case of the Missing Innovation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0; 
+      padding: 0;
+      background: #f6f6f6;
+      color: #333;
+    }
+
+    header {
+      background: #333;
+      color: #fff;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 1rem auto;
+      padding: 1rem;
+      background: #fff;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h1, h2, h3 {
+      margin-top: 0;
+    }
+
+    .story, .clues, .suspects {
+      margin: 1rem 0;
+    }
+
+    .button {
+      background: #0066cc;
+      color: #fff;
+      padding: 0.6rem 1rem;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.2s;
+    }
+
+    .button:hover {
+      background: #004999;
+    }
+
+    .result {
+      margin-top: 1rem;
+      padding: 0.8rem;
+      background: #eee;
+      display: none; 
+    }
+
+    .correct {
+      border-left: 6px solid green;
+    }
+
+    .incorrect {
+      border-left: 6px solid red;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1>Sherlock "Kofi" Holmes: The Case of the Missing Innovation</h1>
+</header>
+
+<div class="container">
+  <section class="story">
+    <p>
+      You are <strong>Sherlock "Kofi" Holmes</strong>, a graduate student suddenly
+      transported into your own detective daydream during class. Professor Punya—magnified 
+      on the lecture screen—mentioned we’re under observation from virtual PhD students. 
+      Meanwhile, your classmates discuss fractals, ancient temple architecture, and anaphora 
+      poetry lines. Something feels suspicious.
+    </p>
+    <p>
+      An urgent whisper reaches your ear: <em>"Innovation has been murdered."</em> 
+      Team Dreamers discovered patterning footprints, and Team Energy (including Yuktha, 
+      Tanmay, and you) showcased AI tips and tricks to solve mysteries. But who really 
+      killed Innovation? It's time to follow the clues, piece them together, and uncover 
+      the culprit.
+    </p>
+  </section>
+
+  <section class="clues">
+    <h2>Clues</h2>
+    <ul>
+      <li><strong>Clue 1:</strong> Fractal patterns and perfect circles in ancient temples—perhaps a hidden 
+        blueprint for how Innovation thrived.</li>
+      <li><strong>Clue 2:</strong> Long-form prompts in AI tools revealed secrets in transcripts, but 
+        also exposed a world of repeated routines and complacency.</li>
+      <li><strong>Clue 3:</strong> Anaphora poetry lines showed that fresh language can spark creativity— 
+        unless fear of failure silences it.</li>
+      <li><strong>Clue 4:</strong> Observing the class “under a microscope” hinted that sometimes ignoring 
+        new perspectives can be fatal.</li>
+    </ul>
+    <p>
+      Analyze these and think: who benefits from Innovation’s demise? Summon your 
+      pattern-recognition skills from <em>Sparks of Genius</em>, see which culprit fits best, 
+      and prepare to make your accusation.
+    </p>
+  </section>
+
+  <section class="suspects">
+    <h2>Suspects</h2>
+    <form id="suspectForm">
+      <p>Select who you believe killed Innovation:</p>
+      <label>
+        <input type="radio" name="suspect" value="Complacency" /> Complacency
+      </label><br>
+      <label>
+        <input type="radio" name="suspect" value="Routine" /> Routine
+      </label><br>
+      <label>
+        <input type="radio" name="suspect" value="Willful Ignorance" /> Willful Ignorance
+      </label><br>
+      <label>
+        <input type="radio" name="suspect" value="Fear of Failure" /> Fear of Failure
+      </label>
+      <br><br>
+      <button type="button" class="button" onclick="checkSuspect()">Accuse</button>
+    </form>
+    <div id="resultBox" class="result"></div>
+  </section>
+</div>
+
+<script>
+  // The correct suspect can be chosen randomly or pre-set here:
+  const correctSuspect = "Willful Ignorance"; 
+  // You can change to: "Complacency", "Routine", or "Fear of Failure"
+
+  function checkSuspect() {
+    const form = document.getElementById('suspectForm');
+    const resultBox = document.getElementById('resultBox');
+    const suspects = form.elements['suspect'];
+    let chosenSuspect = null;
+
+    for (let i = 0; i < suspects.length; i++) {
+      if (suspects[i].checked) {
+        chosenSuspect = suspects[i].value;
+        break;
+      }
+    }
+
+    if (!chosenSuspect) {
+      resultBox.style.display = 'block';
+      resultBox.className = 'result incorrect';
+      resultBox.innerHTML = "You must select a suspect before accusing!";
+      return;
+    }
+
+    if (chosenSuspect === correctSuspect) {
+      resultBox.style.display = 'block';
+      resultBox.className = 'result correct';
+      resultBox.innerHTML = `
+        <strong>Correct!</strong> ${chosenSuspect} is the true culprit behind 
+        the murder of Innovation. By ignoring new perspectives and refusing to see hidden 
+        patterns, Willful Ignorance choked off creativity. 
+        <br><br>
+        Sherlock "Kofi" Holmes: "Case closed, my friends."
+      `;
+    } else {
+      resultBox.style.display = 'block';
+      resultBox.className = 'result incorrect';
+      resultBox.innerHTML = `
+        <strong>Not quite...</strong> You accused ${chosenSuspect}, but that doesn't seem to match 
+        the pattern of evidence. Try again, or reconsider the clues in the classroom. 
+        Innovation's killer is still at large!
+      `;
+    }
+  }
+</script>
+
+</body>
+</html>
